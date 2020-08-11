@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Empleados</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-2.2.3.min.js"
+	integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+	crossorigin="anonymous"></script>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+	crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container">
+		<br>
+		<h2>Agregar Persona</h2>
+		<form action="#" th:action="@{/save}" th:object=${empleado}
+			method="post">
+			<div class="form-group">
+				<label for="nombre">Nombre</label> 
+				<input type="text" class="form-control" id="nombre" th:field="*{nombre}" name="nombre">
+			</div>
+			<input type="hidden" th:field="*{id}" name = "id" id="id">
+			<div class="form-group">
+				<label for="fecha_ingreso">Fecha de ingreso</label>
+				<input type="date" id="fecha_ingreso" th:field="*{fecha_ingreso}" name="fecha_ingreso">
+			</div>
+			<div class="form-group">
+				<label for="nombre">Salario</label> 
+				<input type="number" class="form-control" id="salario" th:field="*{salario}" name="salario">
+			</div>
+			<button type="submit" class="btn btn-sucess">Guardar</button>
+		</form>
+	</div>
+</body>
+</html>

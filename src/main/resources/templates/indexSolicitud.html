@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Solicitudes</title>
+<link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+	<div class="container">
+		<br>
+		<div>
+			<a href="/saveSolicitud/0" class="btn btn-primary">AGREGAR</a>
+		</div>
+		
+			<h2 th:if="${list.isEmpty()}">No existen en el momento Solicitudes</h2>
+			<div th:if="${!list.isEmpty()}">
+				<h2>SOLICITUDES</h2>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>CODIGO</th>
+							<th>DESCRIPCION</th>
+							<th>RESUMEN</th>
+							<th>EMPLEADO</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="solicitud : ${list}">
+							<td th:text="${#numbers.formatInteger(solicitud.getId(),1)}">
+							<td th:text="${solicitud.getCodigo()}">
+							<td th:text="${solicitud.getDescripcion()}">
+							<td th:text="${solicitud.getResumen()}">
+							<td th:text="${solicitud.getEmpleado().getNombre()}">
+							<td><a th:href="@{/saveSolicitud/{id}(id=${solicitud.getId()})}">Editar</a></td>
+							<td><a th:href="@{/deleteSolicitud/{id}(id=${solicitud.getId()})}">Eliminar</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+		
+	
+	</div>
+
+</body>
+</html>
